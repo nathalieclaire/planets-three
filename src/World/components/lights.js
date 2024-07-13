@@ -1,11 +1,7 @@
-import { DirectionalLight } from 'three';
+import { AmbientLight } from 'three';
 
 function createLights() {
-  // Create a directional light
-  const light = new DirectionalLight('white', 8);
-
-  // move the light right, up, and towards us
-  light.position.set(10, 10, 10);
+  const light = new AmbientLight(0xffffff, 1);
 
   return light;
 }

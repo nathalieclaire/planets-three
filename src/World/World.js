@@ -29,7 +29,7 @@ class World {
     const plane = generateUniversePlane();
     const { planet1, planet2 } = createPlanets(); // destructure planets from the returned object
 
-    scene.add(plane, planet1, planet2,  light);
+    scene.add(plane, planet1, planet2, light);
 
     loop.updatables.push(controls);
 
