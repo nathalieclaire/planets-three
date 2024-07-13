@@ -1,0 +1,17 @@
+{
+  "name": "mandelbrot-set",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nathalie",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.164.1"
+  },
+  "devDependencies": {
+    "vite": "^5.2.11"
+  }
+}
