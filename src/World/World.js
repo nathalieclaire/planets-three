@@ -27,9 +27,9 @@ class World {
     const light = createLights();
 
     const plane = generateUniversePlane();
-    const planets = createPlanets();
+    const { planet1, planet2 } = createPlanets(); // destructure planets from the returned object
 
-    scene.add(plane, planets, light);
+    scene.add(plane, planet1, planet2,  light);
 
     loop.updatables.push(controls);
 

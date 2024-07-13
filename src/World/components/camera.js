@@ -5,11 +5,11 @@ function createCamera() {
     35, // fov = Field Of View
     1, // aspect ratio (dummy value)
     5, // near clipping plane
-    200, // far clipping plane
+    400, // far clipping plane
   );
 
   // move the camera back so we can view the scene
-  camera.position.set(0, 0, 20);
+  camera.position.set(0, 0, 260);
 
   return camera;
 }

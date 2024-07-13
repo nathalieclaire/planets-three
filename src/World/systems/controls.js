@@ -8,7 +8,7 @@ function createControls(camera, canvas) {
   // controls.autoRotateSpeed = controls.autoRotateSpeed* 0.15;
 
   controls.minDistance = 7;
-  controls.maxDistance = 100;  
+  controls.maxDistance = 300;  
 
   // Disable rotation
   controls.enableRotate = true;
