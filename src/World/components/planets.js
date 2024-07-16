@@ -14,8 +14,8 @@ function createPlanets() {
     planet2.position.set(30, -30, 30);
 
     const geometry3 = new SphereGeometry(14, 32, 16);
-    // const texture3 = new TextureLoader().load("textures/2k_sun.jpg");
-    const material3 = new MeshStandardMaterial({ color:0xff90f2 });
+    const texture3 = new TextureLoader().load("textures/2k_venus_pink.png");
+    const material3 = new MeshStandardMaterial({ map: texture3 });
     const planet3 = new Mesh(geometry3, material3);
     planet3.position.set(35, 50, 30);
 
@@ -32,14 +32,14 @@ function createPlanets() {
     planet5.position.set(100, 0, 30);
 
     const geometry6 = new SphereGeometry(30, 32, 16);
-    // const texture6 = new TextureLoader().load("textures/2k_saturn.jpg");
-    const material6 = new MeshStandardMaterial({ color: 0x8844ff });
+    const texture6 = new TextureLoader().load("textures/2k_mercury_purple.png");
+    const material6 = new MeshStandardMaterial({ map: texture6 });
     const planet6 = new Mesh(geometry6, material6);
     planet6.position.set(-85, 50, 30);
 
     const geometry7 = new SphereGeometry(23, 32, 16);
-    // const texture6 = new TextureLoader().load("textures/2k_saturn.jpg");
-    const material7 = new MeshStandardMaterial({ color: 0x99ffcc });
+    const texture7 = new TextureLoader().load("textures/2k_saturn_green.png");
+    const material7 = new MeshStandardMaterial({ map: texture7 });
     const planet7 = new Mesh(geometry7, material7);
     planet7.position.set(-40, -70, 30);
 
