@@ -1,4 +1,4 @@
-import { SphereGeometry, MeshStandardMaterial, Mesh, TextureLoader } from 'three';
+import { SphereGeometry, TorusGeometry, MeshStandardMaterial, Mesh, TextureLoader, MathUtils } from 'three';
 
 function createPlanets() {
     const geometry1 = new SphereGeometry(20, 32, 16);
@@ -7,11 +7,18 @@ function createPlanets() {
     const planet1 = new Mesh(geometry1, material1);
     planet1.position.set(-20, 10, 30);
 
-    const geometry2 = new SphereGeometry(15, 32, 16); // er hier bejommt noch n ring
+    const geometry2 = new SphereGeometry(15, 32, 16);
     const texture2 = new TextureLoader().load("textures/2k_neptune.jpg");
     const material2 = new MeshStandardMaterial({ map: texture2 });
     const planet2 = new Mesh(geometry2, material2);
-    planet2.position.set(30, -30, 30);
+    planet2.position.set(35, -30, 30);
+    // add ring
+    const geometryRing = new TorusGeometry( 23, 2, 2, 68 );
+    const textureRing = new TextureLoader().load("textures/2k_saturn_ring_alpha_2.png");
+    const materialRing = new MeshStandardMaterial({ map: textureRing,  color: 0x888888 });
+    const ring = new Mesh(geometryRing, materialRing);
+    ring.position.set(35, -30, 30);
+    ring.rotation.set(MathUtils.degToRad(95), MathUtils.degToRad(-10), MathUtils.degToRad(0));
 
     const geometry3 = new SphereGeometry(14, 32, 16);
     const texture3 = new TextureLoader().load("textures/2k_venus_pink.png");
@@ -43,7 +50,7 @@ function createPlanets() {
     const planet7 = new Mesh(geometry7, material7);
     planet7.position.set(-40, -70, 30);
 
-    return { planet1, planet2, planet3, planet4, planet5, planet6, planet7 };
+    return { planet1, planet2, ring, planet3, planet4, planet5, planet6, planet7 };
 }
 
 export { createPlanets };
