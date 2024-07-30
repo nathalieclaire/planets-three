@@ -9,17 +9,57 @@ import { createControls } from './systems/controls.js';
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
+import { Raycaster, Vector2 } from 'three';
 
 let camera;
 let renderer;
 let scene;
 let loop;
+let raycaster;
+const pointer = new Vector2();
+
+function onPointerMove( event ) {
+
+	// calculate pointer position in normalized device coordinates
+	// (-1 to +1) for both components
+
+	pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+}
+
+class Caster {
+  constructor(planets) {
+    this.planets = planets;
+  }
+
+  tick() {
+  // update the picking ray with the camera and pointer position
+	raycaster.setFromCamera( pointer, camera );
+
+	// calculate objects intersecting the picking ray
+  const intersectedPlanets = this.planets;
+	const intersects = raycaster.intersectObjects( intersectedPlanets );
+  console.log(scene.children);
+  console.log(intersectedPlanets);
+    for ( let i = 0; i < this.planets.length; i ++ ) {
+
+      this.planets[ i ].material.color.set( 0x00ff00 );
+      console.log("hiiiiii2");
+    }
+    for ( let i = 0; i < intersects.length; i ++ ) {
+
+      intersects[ i ].object.material.color.set( 0xff0000 );
+      console.log("hiiiiii");
+    }
+  }
+}
 
 class World {
   constructor(container) {
     camera = createCamera();
     renderer = createRenderer();
     scene = createScene();
+    raycaster = new Raycaster();
     loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
 
@@ -28,12 +68,14 @@ class World {
 
     const plane = generateUniversePlane();
     const { planet1, planet2, ring, planet3, planet4, planet5, planet6, planet7 } = createPlanets(); // destructure planets from the returned object
-
+                                                                                            
     scene.add(plane, planet1, ring, planet2, planet3, planet4, planet5, planet6, planet7, light);
 
     loop.updatables.push(controls);
+    loop.updatables.push(new Caster([planet1, planet2, planet3, planet4, planet5, planet6, planet7]));
 
     const resizer = new Resizer(container, camera, renderer);
+  
   }
 
   render() {
@@ -49,5 +91,7 @@ class World {
     loop.stop();
   }
 }
+
+window.addEventListener( 'pointermove', onPointerMove );
 
 export { World };
