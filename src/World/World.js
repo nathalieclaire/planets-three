@@ -47,7 +47,6 @@ class Caster {
       this.planets[ i ].material.color.set( 0xffffff );
     }
     for ( let i = 0; i < intersects.length; i ++ ) {
-
       intersects[ i ].object.material.color.set( 0xff88ff );
       console.log("pink glow!");
     }
