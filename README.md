@@ -3,8 +3,8 @@
 This is the background for the [planet-pals](https://github.com/nathalieclaire/planet-pals) project! 
 <br>
 <div>
-  <img src="textures\Screenshot1.png" alt="Screenshot 1" style="width: 504px; height: auto; margin: 15px;">
-  <img src="textures\Screenshot2.png" alt="Screenshot 2" style="width: 430px; height: auto; margin: 15px;">
+  <img src="textures\Screenshot1.png" alt="Screenshot 1" style="width: 469px; height: auto; margin: 15px;">
+  <img src="textures\Screenshot2.png" alt="Screenshot 2" style="width: 400px; height: auto; margin: 15px;">
 </div>
 <br><br>
 
