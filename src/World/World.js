@@ -41,15 +41,15 @@ class Caster {
 	const intersects = raycaster.intersectObjects( intersectedPlanets );
   console.log(scene.children);
   console.log(intersectedPlanets);
+    // set default color in the beginning and make planets reset to default color after the planet is not hovererd anymore
     for ( let i = 0; i < this.planets.length; i ++ ) {
 
-      this.planets[ i ].material.color.set( 0x00ff00 );
-      console.log("hiiiiii2");
+      this.planets[ i ].material.color.set( 0xffffff );
     }
     for ( let i = 0; i < intersects.length; i ++ ) {
 
-      intersects[ i ].object.material.color.set( 0xff0000 );
-      console.log("hiiiiii");
+      intersects[ i ].object.material.color.set( 0xff88ff );
+      console.log("pink glow!");
     }
   }
 }
@@ -67,9 +67,9 @@ class World {
     const light = createLights();
 
     const plane = generateUniversePlane();
-    const { planet1, planet2, planet3, planet4, planet5, planet6, planet7 } = createPlanets(); // destructure planets from the returned object
+    const { planet1, planet2, ring, planet3, planet4, planet5, planet6, planet7 } = createPlanets(); // destructure planets from the returned object
                                                                                             
-    scene.add(plane, planet1, planet2, planet3, planet4, planet5, planet6, planet7, light);
+    scene.add(plane, planet1, ring, planet2, planet3, planet4, planet5, planet6, planet7, light);
 
     loop.updatables.push(controls);
     loop.updatables.push(new Caster([planet1, planet2, planet3, planet4, planet5, planet6, planet7]));
