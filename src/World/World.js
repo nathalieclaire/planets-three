@@ -53,6 +53,30 @@ class Caster {
   }
 }
 
+class Rotator {
+  constructor(planets) {
+    this.planets = planets;
+  }
+
+  tick(delta) {
+    this.planets.forEach(planet => {
+      planet.rotation.y += delta * 0.1;
+    });
+  }
+}
+
+class Rotator2 {
+  constructor(planets) {
+    this.planets = planets;
+  }
+
+  tick(delta) {
+    this.planets.forEach(planet => {
+      planet.rotation.x += delta * 0.1;
+    });
+  }
+}
+
 class World {
   constructor(container) {
     camera = createCamera();
@@ -66,12 +90,14 @@ class World {
     const light = createLights();
 
     const plane = generateUniversePlane();
-    const { planet1, planet2, ring, planet3, planet4, planet5, planet6, planet7 } = createPlanets(); // destructure planets from the returned object
+    const { planet1, planet2, ring, ring2, planet3, planet4, planet5, planet6, planet7 } = createPlanets(); // destructure planets from the returned object
                                                                                             
-    scene.add(plane, planet1, ring, planet2, planet3, planet4, planet5, planet6, planet7, light);
+    scene.add(plane, planet1, ring, ring2, planet2, planet3, planet4, planet5, planet6, planet7, light);
 
     loop.updatables.push(controls);
     loop.updatables.push(new Caster([planet1, planet2, planet3, planet4, planet5, planet6, planet7]));
+    loop.updatables.push(new Rotator([planet1, planet2, planet4, planet7, ring, ring2, planet5, planet7, planet6]));
+    loop.updatables.push(new Rotator2([planet3, planet5, planet6, ring, planet7]));
 
     const resizer = new Resizer(container, camera, renderer);
   
